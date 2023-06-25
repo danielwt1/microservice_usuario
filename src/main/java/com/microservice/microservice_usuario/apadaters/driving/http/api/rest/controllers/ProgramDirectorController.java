@@ -1,10 +1,9 @@
 package com.microservice.microservice_usuario.apadaters.driving.http.api.rest.controllers;
 
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.dto.request.UserTeacherRequestDTO;
-import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.service.TeacherService;
+import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.service.ProgramDirectorService;
 import com.microservice.microservice_usuario.exceptionhandler.response.ErrorDetails;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -19,11 +18,11 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/teacher")
-public class TeacherController {
-    private final TeacherService teacherService;
+public class ProgramDirectorController {
+    private final ProgramDirectorService programDirectorService;
 
-    public TeacherController(TeacherService teacherService) {
-        this.teacherService = teacherService;
+    public ProgramDirectorController(ProgramDirectorService programDirectorService) {
+        this.programDirectorService = programDirectorService;
     }
     @Operation(summary = "Le permite  a un Director de programa crear un Usuario de tipo PROFESOR",
             responses = {
@@ -39,7 +38,7 @@ public class TeacherController {
     )
     @PostMapping("")
     public ResponseEntity<Void> createTeacher(@Valid @RequestBody UserTeacherRequestDTO teacherDTO) {
-        this.teacherService.createTeacher(teacherDTO);
+        this.programDirectorService.createTeacher(teacherDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
