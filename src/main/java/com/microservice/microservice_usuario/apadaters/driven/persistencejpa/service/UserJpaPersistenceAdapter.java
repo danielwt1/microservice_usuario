@@ -3,14 +3,14 @@ package com.microservice.microservice_usuario.apadaters.driven.persistencejpa.se
 import com.microservice.microservice_usuario.apadaters.driven.persistencejpa.mapper.entity.UserEntityMapper;
 import com.microservice.microservice_usuario.apadaters.driven.persistencejpa.repository.UserRepository;
 import com.microservice.microservice_usuario.domain.model.UserModel;
-import com.microservice.microservice_usuario.domain.ports.spi.TeacherPersistencePort;
+import com.microservice.microservice_usuario.domain.ports.spi.UserPersistencePort;
 
-public class TeacherJpaPersistenceAdapter implements TeacherPersistencePort {
+public class UserJpaPersistenceAdapter implements UserPersistencePort {
 
     private final UserRepository userRepository;
     private final UserEntityMapper userEntityMapper;
 
-    public TeacherJpaPersistenceAdapter(UserRepository userRepository, UserEntityMapper userEntityMapper) {
+    public UserJpaPersistenceAdapter(UserRepository userRepository, UserEntityMapper userEntityMapper) {
         this.userRepository = userRepository;
         this.userEntityMapper = userEntityMapper;
     }

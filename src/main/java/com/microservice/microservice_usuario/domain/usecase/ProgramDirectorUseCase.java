@@ -3,15 +3,14 @@ package com.microservice.microservice_usuario.domain.usecase;
 import com.microservice.microservice_usuario.domain.model.UserModel;
 import com.microservice.microservice_usuario.domain.model.UserTypeModel;
 import com.microservice.microservice_usuario.domain.model.enums.UserTypeEnum;
-import com.microservice.microservice_usuario.domain.ports.api.TeacherServicePort;
-import com.microservice.microservice_usuario.domain.ports.spi.TeacherPersistencePort;
-import org.hibernate.usertype.UserType;
+import com.microservice.microservice_usuario.domain.ports.api.ProgramDirectorServicePort;
+import com.microservice.microservice_usuario.domain.ports.spi.UserPersistencePort;
 
-public class TeacherUseCase implements TeacherServicePort {
+public class ProgramDirectorUseCase implements ProgramDirectorServicePort {
 
-    private final TeacherPersistencePort teacherPersistencePort;
+    private final UserPersistencePort teacherPersistencePort;
 
-    public TeacherUseCase(TeacherPersistencePort teacherPersistencePort) {
+    public ProgramDirectorUseCase(UserPersistencePort teacherPersistencePort) {
         this.teacherPersistencePort = teacherPersistencePort;
     }
 
