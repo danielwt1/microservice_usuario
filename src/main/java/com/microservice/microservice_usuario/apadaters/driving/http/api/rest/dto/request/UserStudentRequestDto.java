@@ -36,6 +36,13 @@ public class UserStudentRequestDto {
 
     @NotEmpty
     @NotNull
+    @Size(min = 8, max = 20)
+    @Schema(description = "Es la password del sistema de la persona",
+            example = "password")
+    private String password;
+
+    @NotEmpty
+    @NotNull
     @Size(min = 8, max = 10)
     @Pattern(regexp = "^[0-9]+$",message = "El codigo debe ser un numero")
     private String code;
