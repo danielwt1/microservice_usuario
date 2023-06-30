@@ -5,7 +5,9 @@ import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.map
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.mappers.dto.UserModelMapper;
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.service.StudentService;
 import com.microservice.microservice_usuario.domain.ports.api.StudentServicePort;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StudentServiceImpl implements StudentService {
 
     private final StudentServicePort studentServicePort;

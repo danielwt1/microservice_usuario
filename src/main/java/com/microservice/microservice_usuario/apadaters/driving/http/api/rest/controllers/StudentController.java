@@ -26,14 +26,14 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @Operation(summary = "Le permite  a un Director de programa crear un Usuario de tipo ESTUDIANTE",
+    @Operation(summary = "Le permite a un usuario registrarse como tipo ESTUDIANTE",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Se creo un usuario de tipo ESTUDIANTE correctamente"),
 
-                    @ApiResponse(responseCode = "500", description = "A business logic error occurred",
+                    @ApiResponse(responseCode = "500", description = "Error en el servidor",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(type = "object", implementation = ErrorDetails.class))),
-                    @ApiResponse(responseCode = "401", description = "El usario no esta authenticado, o el token esta incorrecto ",
+                    @ApiResponse(responseCode = "401", description = "El usario no esta autenticado, o el token esta incorrecto ",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(type = "object", implementation = ErrorDetails.class)))
             }
