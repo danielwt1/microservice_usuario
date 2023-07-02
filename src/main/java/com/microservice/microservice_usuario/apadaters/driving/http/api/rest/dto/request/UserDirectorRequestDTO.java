@@ -48,7 +48,7 @@ public class UserDirectorRequestDTO {
     @NotEmpty
     @NotNull
     @Size(min = 8, max = 15)
-    @Pattern(regexp = "^[0-9]+$",message = "El codigo debe ser un numero")
+    @Pattern(regexp = "^[0-9]+$", message = "El codigo debe ser un numero")
     @Schema(description = "Es el codigo del director",
             example = "20210920")
     private String code;

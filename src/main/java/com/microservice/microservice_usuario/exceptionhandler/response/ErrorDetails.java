@@ -3,6 +3,7 @@ package com.microservice.microservice_usuario.exceptionhandler.response;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDate;
+
 @Schema(description = "DTO generico para respuesta de errores en la aplicacion",
         name = "ErrorDetails")
 public class ErrorDetails {

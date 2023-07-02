@@ -43,7 +43,7 @@ public class UserTeacherRequestDTO {
     private String password;
     @NotEmpty
     @NotNull
-    @Pattern(regexp = "^[0-9]+$",message = "El codigo debe ser un numero")
+    @Pattern(regexp = "^[0-9]+$", message = "El codigo debe ser un numero")
     @Size(min = 8, max = 15)
     @Schema(description = "Es el codigo de la persona",
             example = "123456789")

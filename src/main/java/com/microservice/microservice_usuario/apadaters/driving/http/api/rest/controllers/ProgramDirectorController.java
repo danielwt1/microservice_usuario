@@ -24,6 +24,7 @@ public class ProgramDirectorController {
     public ProgramDirectorController(ProgramDirectorService programDirectorService) {
         this.programDirectorService = programDirectorService;
     }
+
     @Operation(summary = "Le permite  a un Director de programa crear un Usuario de tipo PROFESOR",
             responses = {
                     @ApiResponse(responseCode = "201", description = "Se creo un usuario de tipo PROFESOR correctamente"),

@@ -3,7 +3,7 @@ package com.microservice.microservice_usuario.domain.usecase;
 import com.microservice.microservice_usuario.domain.model.UserModel;
 import com.microservice.microservice_usuario.domain.model.UserTypeModel;
 import com.microservice.microservice_usuario.domain.model.enums.UserTypeEnum;
-import com.microservice.microservice_usuario.domain.ports.spi.StudentPersistencePort;
+import com.microservice.microservice_usuario.domain.ports.spi.TeacherPersistencePort;
 import com.microservice.microservice_usuario.mockData.UserModelMockData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,37 +17,36 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class StudentUseCaseTest {
+class TeacherUseCaseTest {
     @Mock
-    private StudentPersistencePort studentPersistencePort;
+    private TeacherPersistencePort teacherPersistencePort;
 
     @InjectMocks
-    private StudentUseCase studentUseCase;
+    private TeacherUseCase teacherUseCase;
 
     @BeforeEach
     void setUp() {
-        studentUseCase = new StudentUseCase(studentPersistencePort);
+        teacherUseCase = new TeacherUseCase(teacherPersistencePort);
     }
 
     @Test
-    void createStudent_ShouldSetUserTypeAndCallPersistencePort() {
+    void createTeacher() {
         // Arrange
-        UserModel user_ = UserModelMockData.createMockUserModel(1L, UserTypeEnum.ALUMNO);
-        UserTypeModel expectedUserType = new UserTypeModel(UserTypeEnum.ALUMNO.getIdType());
+        UserModel user_ = UserModelMockData.createMockUserModel(1L, UserTypeEnum.PROFESOR);
+        UserTypeModel expectedUserType = new UserTypeModel(UserTypeEnum.PROFESOR.getIdType());
         user_.setUserType(expectedUserType);
 
         // Act
-        studentUseCase.createStudent(user_);
+        teacherUseCase.createTeacher(user_);
 
         // Assert
-        verify(studentPersistencePort).createStudent(any(UserModel.class));
+        verify(teacherPersistencePort).createTeacher(any(UserModel.class));
         assert user_.getUserType().getIdUserType().equals(expectedUserType.getIdUserType());
     }
 
     @Test
-    void createStudent_WithNullUser_ShouldThrowException() {
+    void createTeacher_WithNullUser_ShouldThrowException() {
         // Arrange & Act & Assert
-        assertThrows(NullPointerException.class, () -> studentUseCase.createStudent(null));
+        assertThrows(NullPointerException.class, () -> teacherUseCase.createTeacher(null));
     }
-
 }

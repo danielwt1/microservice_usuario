@@ -3,7 +3,7 @@ package com.microservice.microservice_usuario.domain.usecase;
 import com.microservice.microservice_usuario.domain.model.UserModel;
 import com.microservice.microservice_usuario.domain.model.UserTypeModel;
 import com.microservice.microservice_usuario.domain.model.enums.UserTypeEnum;
-import com.microservice.microservice_usuario.domain.ports.spi.StudentPersistencePort;
+import com.microservice.microservice_usuario.domain.ports.spi.DirectorPersistencePort;
 import com.microservice.microservice_usuario.mockData.UserModelMockData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,37 +17,36 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class StudentUseCaseTest {
+class DirectorProgramUseCaseTest {
     @Mock
-    private StudentPersistencePort studentPersistencePort;
+    private DirectorPersistencePort directorPersistencePort;
 
     @InjectMocks
-    private StudentUseCase studentUseCase;
+    private DirectorProgramUseCase directorProgramUseCase;
 
     @BeforeEach
     void setUp() {
-        studentUseCase = new StudentUseCase(studentPersistencePort);
+        directorProgramUseCase = new DirectorProgramUseCase(directorPersistencePort);
     }
 
     @Test
-    void createStudent_ShouldSetUserTypeAndCallPersistencePort() {
+    void createDirector() {
         // Arrange
-        UserModel user_ = UserModelMockData.createMockUserModel(1L, UserTypeEnum.ALUMNO);
-        UserTypeModel expectedUserType = new UserTypeModel(UserTypeEnum.ALUMNO.getIdType());
+        UserModel user_ = UserModelMockData.createMockUserModel(1L, UserTypeEnum.DIRECTOR_DE_PROGRAMA);
+        UserTypeModel expectedUserType = new UserTypeModel(UserTypeEnum.DIRECTOR_DE_PROGRAMA.getIdType());
         user_.setUserType(expectedUserType);
 
         // Act
-        studentUseCase.createStudent(user_);
+        directorProgramUseCase.createDirector(user_);
 
         // Assert
-        verify(studentPersistencePort).createStudent(any(UserModel.class));
+        verify(directorPersistencePort).createDirector(any(UserModel.class));
         assert user_.getUserType().getIdUserType().equals(expectedUserType.getIdUserType());
     }
 
     @Test
-    void createStudent_WithNullUser_ShouldThrowException() {
+    void createDirector_WithNullUser_ShouldThrowException() {
         // Arrange & Act & Assert
-        assertThrows(NullPointerException.class, () -> studentUseCase.createStudent(null));
+        assertThrows(NullPointerException.class, () -> directorProgramUseCase.createDirector(null));
     }
-
 }

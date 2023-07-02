@@ -7,7 +7,6 @@ import com.microservice.microservice_usuario.domain.ports.api.StudentServicePort
 import com.microservice.microservice_usuario.domain.ports.spi.StudentPersistencePort;
 
 public class StudentUseCase implements StudentServicePort {
-
     private final StudentPersistencePort studentPersistencePort;
 
     public StudentUseCase(StudentPersistencePort studentPersistencePort) {

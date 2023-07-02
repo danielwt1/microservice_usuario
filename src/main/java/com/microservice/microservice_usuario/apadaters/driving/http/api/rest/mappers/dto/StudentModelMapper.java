@@ -9,5 +9,5 @@ import org.mapstruct.Mapper;
         unmappedSourcePolicy = org.mapstruct.ReportingPolicy.IGNORE)
 
 public interface StudentModelMapper {
-    public UserModel toModel(UserStudentRequestDto userStudentRequestDto);
+    UserModel toModel(UserStudentRequestDto userStudentRequestDto);
 }
