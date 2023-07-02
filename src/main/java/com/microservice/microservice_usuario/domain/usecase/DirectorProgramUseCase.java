@@ -3,14 +3,13 @@ package com.microservice.microservice_usuario.domain.usecase;
 import com.microservice.microservice_usuario.domain.model.UserModel;
 import com.microservice.microservice_usuario.domain.model.UserTypeModel;
 import com.microservice.microservice_usuario.domain.model.enums.UserTypeEnum;
-import com.microservice.microservice_usuario.domain.ports.api.DirectorServicePort;
+import com.microservice.microservice_usuario.domain.ports.api.DirectorProgramServicePort;
 import com.microservice.microservice_usuario.domain.ports.spi.DirectorPersistencePort;
 
-public class DirectorUseCase implements DirectorServicePort {
-
+public class DirectorProgramUseCase implements DirectorProgramServicePort {
     private final DirectorPersistencePort directorPersistencePort;
 
-    public DirectorUseCase(DirectorPersistencePort directorPersistencePort) {
+    public DirectorProgramUseCase(DirectorPersistencePort directorPersistencePort) {
         this.directorPersistencePort = directorPersistencePort;
     }
 

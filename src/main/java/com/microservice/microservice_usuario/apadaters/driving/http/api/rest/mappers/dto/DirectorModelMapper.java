@@ -8,5 +8,5 @@ import org.mapstruct.Mapper;
         unmappedTargetPolicy = org.mapstruct.ReportingPolicy.IGNORE,
         unmappedSourcePolicy = org.mapstruct.ReportingPolicy.IGNORE)
 public interface DirectorModelMapper {
-    public UserModel toModel(UserDirectorRequestDTO userDirectorRequestDTO);
+    UserModel toModel(UserDirectorRequestDTO userDirectorRequestDTO);
 }

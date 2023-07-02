@@ -6,7 +6,7 @@ public enum UserTypeEnum {
     PROFESOR(3L),
     ALUMNO(4L);
 
-    private Long idType;
+    private final Long idType;
 
     UserTypeEnum(Long idType) {
         this.idType = idType;

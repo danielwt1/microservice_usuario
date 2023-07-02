@@ -6,9 +6,7 @@ import com.microservice.microservice_usuario.domain.model.UserModel;
 import com.microservice.microservice_usuario.domain.ports.spi.StudentPersistencePort;
 
 public class StudentJpaPersistencePort implements StudentPersistencePort {
-
     private final UserRepository userRepository;
-
     private final UserEntityMapper userEntityMapper;
 
     public StudentJpaPersistencePort(UserRepository userRepository, UserEntityMapper userEntityMapper) {

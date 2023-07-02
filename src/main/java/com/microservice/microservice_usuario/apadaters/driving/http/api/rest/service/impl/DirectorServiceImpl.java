@@ -3,24 +3,24 @@ package com.microservice.microservice_usuario.apadaters.driving.http.api.rest.se
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.dto.request.UserDirectorRequestDTO;
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.mappers.dto.DirectorModelMapper;
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.service.DirectorService;
-import com.microservice.microservice_usuario.domain.ports.api.DirectorServicePort;
+import com.microservice.microservice_usuario.domain.ports.api.DirectorProgramServicePort;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DirectorServiceImpl implements DirectorService {
 
-    private final DirectorServicePort directorServicePort;
+    private final DirectorProgramServicePort directorProgramServicePort;
 
     private final DirectorModelMapper directorModelMapper;
 
-    public DirectorServiceImpl(DirectorServicePort directorServicePort, DirectorModelMapper directorModelMapper) {
-        this.directorServicePort = directorServicePort;
+    public DirectorServiceImpl(DirectorProgramServicePort directorProgramServicePort, DirectorModelMapper directorModelMapper) {
+        this.directorProgramServicePort = directorProgramServicePort;
         this.directorModelMapper = directorModelMapper;
     }
 
     @Override
     public void createDirector(UserDirectorRequestDTO userDirectorRequestDTO) {
-        this.directorServicePort.createDirector(
+        this.directorProgramServicePort.createDirector(
                 this.directorModelMapper.toModel(userDirectorRequestDTO));
     }
 }

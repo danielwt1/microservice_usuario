@@ -1,7 +1,6 @@
 package com.microservice.microservice_usuario.apadaters.driving.http.api.rest.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jdk.jfr.Description;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -49,7 +48,7 @@ public class UserStudentRequestDto {
     @NotEmpty
     @NotNull
     @Size(min = 8, max = 10)
-    @Pattern(regexp = "^[0-9]+$",message = "El codigo debe ser un numero")
+    @Pattern(regexp = "^[0-9]+$", message = "El codigo debe ser un numero")
     @Schema(description = "Es el codigo del estudiante",
             example = "20210920")
     private String code;

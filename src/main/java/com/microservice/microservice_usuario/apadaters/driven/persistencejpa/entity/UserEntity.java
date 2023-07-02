@@ -1,6 +1,5 @@
 package com.microservice.microservice_usuario.apadaters.driven.persistencejpa.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,25 +10,28 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USUARIOS")
+@Table(name = "USUARIO")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long idUser;
-    @Column(nullable = false,length = 20)
+
+    @Column(name = "nombre", nullable = false, length = 20)
     private String name;
-    @Column(nullable = false,length = 20)
 
+    @Column(name = "apellido", nullable = false, length = 20)
     private String lastName;
-    @Column(nullable = false)
 
+    @Column(name = "email", nullable = false)
     private String email;
-    @Column(nullable = false)
 
+    @Column(name = "password", nullable = false)
     private String password;
-    @Column(nullable = false)
 
+    @Column(name = "codigo", nullable = false)
     private Long code;
+
     @OneToOne
     @JoinColumn(name = "idUserType")
     private UserTypeEntity userType;

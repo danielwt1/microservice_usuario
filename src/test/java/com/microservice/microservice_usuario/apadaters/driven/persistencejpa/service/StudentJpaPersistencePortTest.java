@@ -1,9 +1,10 @@
-package com.microservice.microservice_usuario.domain.usecase;
+package com.microservice.microservice_usuario.apadaters.driven.persistencejpa.service;
 
+import com.microservice.microservice_usuario.apadaters.driven.persistencejpa.mapper.entity.UserEntityMapper;
+import com.microservice.microservice_usuario.apadaters.driven.persistencejpa.repository.UserRepository;
 import com.microservice.microservice_usuario.domain.model.UserModel;
 import com.microservice.microservice_usuario.domain.model.UserTypeModel;
 import com.microservice.microservice_usuario.domain.model.enums.UserTypeEnum;
-import com.microservice.microservice_usuario.domain.ports.spi.StudentPersistencePort;
 import com.microservice.microservice_usuario.mockData.UserModelMockData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,42 +13,37 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class StudentUseCaseTest {
+class StudentJpaPersistencePortTest {
     @Mock
-    private StudentPersistencePort studentPersistencePort;
+    private UserRepository userRepository;
+
+    @Mock
+    private UserEntityMapper userEntityMapper;
 
     @InjectMocks
-    private StudentUseCase studentUseCase;
+    private StudentJpaPersistencePort studentJpaPersistencePort;
 
     @BeforeEach
-    void setUp() {
-        studentUseCase = new StudentUseCase(studentPersistencePort);
+    public void setup() {
+        studentJpaPersistencePort = new StudentJpaPersistencePort(userRepository, userEntityMapper);
     }
 
     @Test
-    void createStudent_ShouldSetUserTypeAndCallPersistencePort() {
+    void createStudent() {
         // Arrange
         UserModel user_ = UserModelMockData.createMockUserModel(1L, UserTypeEnum.ALUMNO);
         UserTypeModel expectedUserType = new UserTypeModel(UserTypeEnum.ALUMNO.getIdType());
         user_.setUserType(expectedUserType);
 
         // Act
-        studentUseCase.createStudent(user_);
+        studentJpaPersistencePort.createStudent(user_);
 
         // Assert
-        verify(studentPersistencePort).createStudent(any(UserModel.class));
+        verify(userRepository).save(userEntityMapper.toEntity(user_));
         assert user_.getUserType().getIdUserType().equals(expectedUserType.getIdUserType());
-    }
-
-    @Test
-    void createStudent_WithNullUser_ShouldThrowException() {
-        // Arrange & Act & Assert
-        assertThrows(NullPointerException.class, () -> studentUseCase.createStudent(null));
     }
 
 }

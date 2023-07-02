@@ -3,14 +3,13 @@ package com.microservice.microservice_usuario.domain.usecase;
 import com.microservice.microservice_usuario.domain.model.UserModel;
 import com.microservice.microservice_usuario.domain.model.UserTypeModel;
 import com.microservice.microservice_usuario.domain.model.enums.UserTypeEnum;
-import com.microservice.microservice_usuario.domain.ports.api.ProgramDirectorServicePort;
-import com.microservice.microservice_usuario.domain.ports.spi.UserPersistencePort;
+import com.microservice.microservice_usuario.domain.ports.api.TeacherServicePort;
+import com.microservice.microservice_usuario.domain.ports.spi.TeacherPersistencePort;
 
-public class ProgramDirectorUseCase implements ProgramDirectorServicePort {
+public class TeacherUseCase implements TeacherServicePort {
+    private final TeacherPersistencePort teacherPersistencePort;
 
-    private final UserPersistencePort teacherPersistencePort;
-
-    public ProgramDirectorUseCase(UserPersistencePort teacherPersistencePort) {
+    public TeacherUseCase(TeacherPersistencePort teacherPersistencePort) {
         this.teacherPersistencePort = teacherPersistencePort;
     }
 

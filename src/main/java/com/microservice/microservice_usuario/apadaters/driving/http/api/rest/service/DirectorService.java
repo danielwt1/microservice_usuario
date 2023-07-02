@@ -4,6 +4,6 @@ import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.dto
 
 public interface DirectorService {
 
-    public void createDirector(UserDirectorRequestDTO userDirectorRequestDTO);
+    void createDirector(UserDirectorRequestDTO userDirectorRequestDTO);
 
 }

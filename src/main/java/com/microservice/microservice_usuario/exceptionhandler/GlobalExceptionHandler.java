@@ -19,11 +19,11 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         String message = ex.getBindingResult().getFieldErrors()
                 .stream()
-                .map(fieldError -> fieldError.getField()+":"+fieldError.getDefaultMessage()).collect(Collectors.joining(", "));
+                .map(fieldError -> fieldError.getField() + ":" + fieldError.getDefaultMessage()).collect(Collectors.joining(", "));
 
-        ErrorDetails errorDetails = new ErrorDetails(LocalDate.now(),message , request.getDescription(false));
+        ErrorDetails errorDetails = new ErrorDetails(LocalDate.now(), message, request.getDescription(false));
 
 
-        return new ResponseEntity<>(errorDetails,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 }

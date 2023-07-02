@@ -2,7 +2,6 @@ package com.microservice.microservice_usuario.apadaters.driving.http.api.rest.se
 
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.dto.request.UserStudentRequestDto;
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.mappers.dto.StudentModelMapper;
-import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.mappers.dto.UserModelMapper;
 import com.microservice.microservice_usuario.apadaters.driving.http.api.rest.service.StudentService;
 import com.microservice.microservice_usuario.domain.ports.api.StudentServicePort;
 import org.springframework.stereotype.Service;

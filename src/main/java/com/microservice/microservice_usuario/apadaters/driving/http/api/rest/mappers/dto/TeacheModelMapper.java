@@ -9,8 +9,8 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
         unmappedSourcePolicy = ReportingPolicy.IGNORE)
-public interface UserModelMapper {
+public interface TeacheModelMapper {
     UserModel toModel(UserTeacherRequestDTO teacherDTO);
-    UserEntity toEntity(UserModel teacherModel);
 
+    UserEntity toEntity(UserModel teacherModel);
 }
