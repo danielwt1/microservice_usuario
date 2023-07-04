@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,7 +40,7 @@ public class StudentController {
             }
     )
     @PostMapping("")
-    public ResponseEntity<Void> createStudent(@Valid @RequestBody UserStudentRequestDto userStudentRequestDto) {
+    public ResponseEntity<Void> createStudent(@RequestHeader(name ="user")String user, @Valid @RequestBody UserStudentRequestDto userStudentRequestDto) {
         this.studentService.createStudent(userStudentRequestDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

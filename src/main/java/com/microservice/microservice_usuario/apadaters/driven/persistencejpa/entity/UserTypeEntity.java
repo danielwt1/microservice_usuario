@@ -12,13 +12,10 @@ import javax.persistence.Table;
 public class UserTypeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long idUserType;
 
-    @Column(name = "nombre")
     private String name;
 
-    @Column(name = "descripcion")
     private String description;
 
     public UserTypeEntity() {

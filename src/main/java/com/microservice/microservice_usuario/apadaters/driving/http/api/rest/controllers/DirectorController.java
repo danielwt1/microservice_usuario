@@ -6,9 +6,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,9 +41,10 @@ public class DirectorController {
                                     schema = @Schema(type = "object", implementation = Exception.class)))
             }
     )
+    @PreAuthorize("@authService.checkDecanoRole(@authService.rolesContext)")
     @PostMapping("")
-    public ResponseEntity<Void> createDirector(@Valid @RequestBody UserDirectorRequestDTO userDirectorRequestDTO) {
+    public ResponseEntity<Void> createDirector(@RequestHeader(name ="user")String user, @Valid @RequestBody UserDirectorRequestDTO userDirectorRequestDTO) {
         this.directorService.createDirector(userDirectorRequestDTO);
-        return ResponseEntity.ok().build();
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

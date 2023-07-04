@@ -9,8 +9,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +39,9 @@ public class ProgramDirectorController {
                                     schema = @Schema(type = "object", implementation = ErrorDetails.class)))
             }
     )
+    @PreAuthorize("@authService.checkDirectorProgramaRole(@authService.rolesContext)")
     @PostMapping("")
-    public ResponseEntity<Void> createTeacher(@Valid @RequestBody UserTeacherRequestDTO teacherDTO) {
+    public ResponseEntity<Void> createTeacher(@RequestHeader(name ="user")String user, @Valid @RequestBody UserTeacherRequestDTO teacherDTO) {
         this.programDirectorService.createTeacher(teacherDTO);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
