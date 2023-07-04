@@ -12,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.mockito.Mockito.verify;
 
@@ -22,13 +23,15 @@ class StudentJpaPersistencePortTest {
 
     @Mock
     private UserEntityMapper userEntityMapper;
+    @Mock
+    PasswordEncoder passwordEncoder;
 
     @InjectMocks
     private StudentJpaPersistencePort studentJpaPersistencePort;
 
     @BeforeEach
     public void setup() {
-        studentJpaPersistencePort = new StudentJpaPersistencePort(userRepository, userEntityMapper);
+        studentJpaPersistencePort = new StudentJpaPersistencePort(userRepository, userEntityMapper,passwordEncoder);
     }
 
     @Test

@@ -16,21 +16,24 @@ import com.microservice.microservice_usuario.domain.usecase.StudentUseCase;
 import com.microservice.microservice_usuario.domain.usecase.TeacherUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class BeansConfiguration {
 
     private final UserRepository userRepository;
     private final UserEntityMapper userEntityMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public BeansConfiguration(UserRepository userRepository, UserEntityMapper userEntityMapper) {
+    public BeansConfiguration(UserRepository userRepository, UserEntityMapper userEntityMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userEntityMapper = userEntityMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Bean
     public TeacherPersistencePort getTeacherPersistencePort() {
-        return new TeacherJpaPersistencePort(userRepository, userEntityMapper);
+        return new TeacherJpaPersistencePort(userRepository, userEntityMapper,passwordEncoder);
     }
 
     @Bean
@@ -40,7 +43,7 @@ public class BeansConfiguration {
 
     @Bean
     public StudentPersistencePort getStudentPersistencePort() {
-        return new StudentJpaPersistencePort(userRepository, userEntityMapper);
+        return new StudentJpaPersistencePort(userRepository, userEntityMapper,passwordEncoder);
     }
 
     @Bean
@@ -50,7 +53,7 @@ public class BeansConfiguration {
 
     @Bean
     public DirectorPersistencePort getDirectorPersistencePort() {
-        return new ProgramDirectorJpaPersistencePort(userRepository, userEntityMapper);
+        return new ProgramDirectorJpaPersistencePort(userRepository, userEntityMapper,passwordEncoder);
     }
 
     @Bean
