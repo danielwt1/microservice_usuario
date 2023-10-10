@@ -39,7 +39,7 @@ public class ProgramDirectorController {
                                     schema = @Schema(type = "object", implementation = ErrorDetails.class)))
             }
     )
-    @PreAuthorize("@authService.checkDirectorProgramaRole(@authService.rolesContext)")
+    //@PreAuthorize("@authService.checkDirectorProgramaRole(@authService.rolesContext)")
     @PostMapping("")
     public ResponseEntity<Void> createTeacher(@RequestHeader(name ="user")String user, @Valid @RequestBody UserTeacherRequestDTO teacherDTO) {
         this.programDirectorService.createTeacher(teacherDTO);

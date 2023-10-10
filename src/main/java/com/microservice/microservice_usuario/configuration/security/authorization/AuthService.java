@@ -33,5 +33,4 @@ public class AuthService {
                 .collect(Collectors.toList());
     }
 
-
 }

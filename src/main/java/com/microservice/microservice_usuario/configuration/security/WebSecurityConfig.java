@@ -55,7 +55,7 @@ public class WebSecurityConfig {
                 .antMatchers("/login").permitAll() //.hasAuthority("ADMIN")
                 .antMatchers("/api/v1/student").permitAll() //.hasAuthority("ADMIN")
 
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and()

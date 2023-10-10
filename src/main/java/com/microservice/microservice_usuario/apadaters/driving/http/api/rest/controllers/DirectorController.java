@@ -41,7 +41,7 @@ public class DirectorController {
                                     schema = @Schema(type = "object", implementation = Exception.class)))
             }
     )
-    @PreAuthorize("@authService.checkDecanoRole(@authService.rolesContext)")
+    //@PreAuthorize("@authService.checkDecanoRole(@authService.rolesContext)")
     @PostMapping("")
     public ResponseEntity<Void> createDirector(@RequestHeader(name ="user")String user, @Valid @RequestBody UserDirectorRequestDTO userDirectorRequestDTO) {
         this.directorService.createDirector(userDirectorRequestDTO);
